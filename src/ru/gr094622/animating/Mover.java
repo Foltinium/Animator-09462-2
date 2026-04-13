@@ -5,7 +5,7 @@ import ru.gr094622.model.GeometryObject;
 import java.awt.*;
 import java.util.List;
 
-public class Mover implements Animatable {
+public class Mover implements Animatable, Runnable {
     private List<GeometryObject> objects;
     private Dimension size;
     private boolean isRunning = false;
@@ -50,7 +50,7 @@ public class Mover implements Animatable {
         if (isRunning) return;
 
         isRunning = true;
-        thread = new Thread((Runnable) this);
+        thread = new Thread(this);
         thread.start();
     }
 
